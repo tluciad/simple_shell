@@ -4,14 +4,14 @@
  * @cmd: pointer to Command element of structure
  */
 
-void free_all(cmd_t *cmd)
+void free_all(sll_t *cmd)
 {
 	int i = 0;
 
 	if (cmd)
 	{
-		free(cmd->command);
-		cmd->command = NULL;
+		free(cmd->Command);
+		cmd->Command = NULL;
 
 		if (cmd->flags)
 		{
@@ -29,7 +29,7 @@ void free_all(cmd_t *cmd)
 }
 /**
  * count_flags_by_space -  to determinate the number of arguments
- * after command
+ * after Command
  * @input: the user input
  * Return: the count of flags
  */
@@ -48,19 +48,19 @@ int count_flags_by_space(char *input)
 	return (count);
 }
 /**
- * new_cmd - to determinate the comand in the input
+ * new_cmd - to determinate the Command in the input
  * @num_flags : number of flags in the string
  * Return: cmd
  */
-cmd_t *new_cmd(int num_flags)
+sll_t *new_cmd(int num_flags)
 {
-	cmd_t *cmd = (cmd_t *)malloc(sizeof(cmd_t));
+	sll_t *cmd = (sll_t *)malloc(sizeof(sll_t));
 
 	if (!cmd)
 		return (NULL);
 
 	cmd->num_flags = num_flags;
-	cmd->command = NULL;
+	cmd->Command = NULL;
 	cmd->flags = NULL;
 
 	cmd->flags = (char **)malloc(sizeof(char *) * num_flags);
@@ -74,12 +74,12 @@ cmd_t *new_cmd(int num_flags)
 /**
  * parse_cmd - to manage the string input
  * @input: what the user write in the input
- * Return: command of the string
+ * Return: Command of the string
  */
-cmd_t *parse_cmd(char *input)
+sll_t *parse_cmd(char *input)
 {
 	int i = 0, flags_count = 0;
-	cmd_t *cmd = NULL;
+	sll_t *cmd = NULL;
 	char *token = NULL;
 
 	/** Remove the last character '\n' for '\0' */
@@ -94,15 +94,15 @@ cmd_t *parse_cmd(char *input)
 
 	if (cmd->num_flags == 0)
 	{
-		cmd->command = _strdup(input);
+		cmd->Command = _strdup(input);
 		return (cmd);
 	}
 
 	token = strtok(input, " "); /*Input: ls -l -a -b*/
-	while (token != NULL)		/*command = [ls] [-l] [-a] [-b]*/
+	while (token != NULL)		/*Command = [ls] [-l] [-a] [-b]*/
 	{
-		if (cmd->command == NULL)
-			cmd->command = _strdup(token);
+		if (cmd->Command == NULL)
+			cmd->Command = _strdup(token);
 
 		else
 			cmd->flags[i] = _strdup(token), i++;

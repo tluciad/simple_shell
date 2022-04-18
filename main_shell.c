@@ -13,7 +13,7 @@ int main(int argc, char *argv[], char **envs)
 	char *line = NULL;
 	int count = 0;
 	struct stat statistics;
-	char *commandPath = NULL, *envPath;
+	char *CommandPath = NULL, *envPath;
 
 	envPath = getenv("PATH");
 
@@ -22,7 +22,7 @@ int main(int argc, char *argv[], char **envs)
 	while (true)
 	{
 		line = NULL;
-		commandPath = NULL;
+		CommandPath = NULL;
 		count++;
 
 		if (isatty(STDIN_FILENO) == 1)
@@ -39,15 +39,15 @@ int main(int argc, char *argv[], char **envs)
 		}
 		sll_t *cmd = parse_cmd(line);//Parse - Proccess a string and
 		free(line);                  // Manipulate line(read buffer)
-		printf("command: |%s|\n", cmd->command);
-		/* ----------------------------------- builtin-functions----------------------*/
-		if (strcmp(cmd->command, "exit") == 0)
+		printf("Command: |%s|\n", cmd->Command);
+		
+		if (strcmp(cmd->Command, "exit") == 0)
 		{
 			free_all(cmd);
 			exit(EXIT_SUCCESS);
 		}
 
-		if (strcmp(cmd->command, "env") == 0)
+		if (strcmp(cmd->Command, "env") == 0)
 		{
 			while (*envs)
 			{
@@ -57,24 +57,12 @@ int main(int argc, char *argv[], char **envs)
 			free_all(cmd);
 			continue;
 		}
-
-		if (strcmp(cmd->command, "cd") == 0)
+		
+		CommandPath = getpath_cmd(cmd, envPath);
+		if (!CommandPath)
 		{
-			printf("I'm cd command\n");
-			free_all(cmd);
-			continue;
-		}
-		// ----------------------------------- no-build-in-functions----------------------
-
-		/**
-		 * Extract the command path
-		 *
-		 */
-		commandPath = get_path_from_command(cmd, envPath);
-		if (!commandPath)
-		{
-			printf("%s: command not found\n", cmd->command);
-			free(commandPath);
+			printf("%s: Command not found\n", cmd->Command);
+			free(CommandPath);
 			free_all(cmd);
 			continue;
 		}
@@ -84,8 +72,7 @@ int main(int argc, char *argv[], char **envs)
 
 		if (childPid == 0)
 		{
-			// cmd->num_flags;
-			// ([ arg1, arg2, arg3 ]) = 3;
+			
 			int totalCommand = cmd->num_flags + 1;
 
 			char **arg_list = malloc(sizeof(char *) * totalCommand);
@@ -94,29 +81,18 @@ int main(int argc, char *argv[], char **envs)
 			while (i < totalCommand)
 			{
 				if (i == 0)
-					arg_list[i] = commandPath;
+					arg_list[i] = CommandPath;
 				else
 					arg_list[i] = cmd->flags[i - 1];
 				i++;
 			}
 
-			// [command, arg1, arg2, arg3] = 4
-
-			// arg_list = [command] || cmd->flags = [arg1, arg2, arg3]
-			// [1] + [2] = [1, 2];
-			// [command, arg1, arg2, arg3]
-			// execv(..., arg_list)
-			execv(commandPath, arg_list);
+			execv(CommandPath, arg_list);
 		}
 
 		wait(&statusLock);
 
-		// implement execv
-
-		// ----------------------------------- no-build-in-functions----------------------
-
-		// Func that free all mallocs
-		free(commandPath);
+		free(CommandPath);
 		free_all(cmd);
 	}
 
