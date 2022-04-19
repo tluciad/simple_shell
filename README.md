@@ -37,6 +37,7 @@ The first UNIX was developed in 1970 at Bell Telephone Laboratories
 
 ## Compilation
 Your shell will be compiled this way:
+
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
