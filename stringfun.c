@@ -1,40 +1,21 @@
 #include "my_shell.h"
 
 /**
- * *_strcpy - copies the string pointed to by src to the buffer pointed to dest
- * @dest: char dest
- * @src: char src
- * Return: dest.
- */
-char *_strcpy(char *dest, char *src)
-{
-	int i;
-	char a;
-
-	for (i = 0; src[i] != '\0'; i++)
-	{
-		a = src[i];
-		dest[i] = a;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-/**
  * _strlen - returns the length of a string.
  * @s: pointer to String
  * Return: Nothing
  */
-int _strlen(const char *s)
+int _strlen(const char *str)
 {
-	int i = 0;
+	int count = 0;
 
-	while (*(s + i) != '\0')
-	{
-		i++;
-	}
+	if (!str)
+		return (count);
 
-	return (i);
+	while (str[count])
+		count++;
+
+	return (count);
 }
 
 char *_strconcat(char *s1, char *s2, char *s3)
@@ -70,9 +51,9 @@ char *_strconcat(char *s1, char *s2, char *s3)
 }
 
 /**
- * _strdup - to duplicate a string 
+ * _strdup - to duplicate a string
  * @str: string to duplicate
- * Return: the duplicate. 
+ * Return: the duplicate.
  */
 char *_strdup(char *str)
 {

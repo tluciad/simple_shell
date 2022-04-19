@@ -1,11 +1,11 @@
 #include "my_shell.h"
 /**
- * getpath_cmd - Get the path from Command object
- * @cmd: Command
+ * getpath_sll - Get the path from Command object
+ * @sll: Command
  * @envPath: environment path
  * Return: char*
  */
-char *getpath_cmd(sll_t *cmd, char *envPath)
+char *getpath_sll(sll_t *sll, char *envPath)
 {
 	char *path = NULL,
 			 *token = NULL,
@@ -18,7 +18,7 @@ char *getpath_cmd(sll_t *cmd, char *envPath)
 	token = strtok(tempEnvP, ":");
 	while (token != NULL)
 	{
-		path = _strconcat(token, "/", cmd->Command);
+		path = _strconcat(token, "/", sll->Command);
 
 		if (stat(path, &stats) == 0)
 			break;

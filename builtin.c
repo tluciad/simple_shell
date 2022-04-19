@@ -7,13 +7,13 @@
  */
 int built_in(sll_t *sll, char **envs)
 {
-	if (strcmp(sll->command, "exit") == 0)
+	if (strcmp(sll->Command, "exit") == 0)
 	{
-		free_all(cmd);
+		free_all(sll);
 		exit(EXIT_SUCCESS);
 	}
 
-	if (strcmp(sll->command, "env") == 0)
+	if (strcmp(sll->Command, "env") == 0)
 	{
 		while (*envs)
 		{
@@ -24,16 +24,16 @@ int built_in(sll_t *sll, char **envs)
 		return (1);
 	}
 
-	if (strcmp(sll->command, "cd") == 0)
+	if (strcmp(sll->Command, "cd") == 0)
 	{
-		printf("I'm cd command\n");
+		printf("I'm cd Command\n");
 		free_all(sll);
 		return (1);
 	}
 
-	if (strcmp(sll->command, "cd") == 0)
+	if (strcmp(sll->Command, "cd") == 0)
 	{
-		printf("I'm cd command\n");
+		printf("I'm cd Command\n");
 		free_all(sll);
 		return (1);
 	}

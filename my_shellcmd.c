@@ -1,30 +1,30 @@
 #include "my_shell.h"
 /**
  * free_all - Function to free all dynamic memory allocated
- * @cmd: pointer to Command element of structure
+ * @sll: pointer to Command element of structure
  */
 
-void free_all(sll_t *cmd)
+void free_all(sll_t *sll)
 {
 	int i = 0;
 
-	if (cmd)
+	if (sll)
 	{
-		free(cmd->Command);
-		cmd->Command = NULL;
+		free(sll->Command);
+		sll->Command = NULL;
 
-		if (cmd->flags)
+		if (sll->flags)
 		{
-			for (; i < cmd->num_flags; i++)
+			for (; i < sll->num_flags; i++)
 			{
-				if (cmd->flags[i])
-					free(cmd->flags[i]);
+				if (sll->flags[i])
+					free(sll->flags[i]);
 			}
-			free(cmd->flags);
-			cmd->flags = NULL;
+			free(sll->flags);
+			sll->flags = NULL;
 		}
-		free(cmd);
-		cmd = NULL;
+		free(sll);
+		sll = NULL;
 	}
 }
 /**
@@ -48,38 +48,38 @@ int count_flags_by_space(char *input)
 	return (count);
 }
 /**
- * new_cmd - to determinate the Command in the input
+ * new_sll - to determinate the Command in the input
  * @num_flags : number of flags in the string
- * Return: cmd
+ * Return: sll
  */
-sll_t *new_cmd(int num_flags)
+sll_t *new_sll(int num_flags)
 {
-	sll_t *cmd = (sll_t *)malloc(sizeof(sll_t));
+	sll_t *sll = (sll_t *)malloc(sizeof(sll_t));
 
-	if (!cmd)
+	if (!sll)
 		return (NULL);
 
-	cmd->num_flags = num_flags;
-	cmd->Command = NULL;
-	cmd->flags = NULL;
+	sll->num_flags = num_flags;
+	sll->Command = NULL;
+	sll->flags = NULL;
 
-	cmd->flags = (char **)malloc(sizeof(char *) * num_flags);
-	if (cmd->flags == NULL)
+	sll->flags = (char **)malloc(sizeof(char *) * num_flags);
+	if (sll->flags == NULL)
 	{
-		free_all(cmd);
+		free_all(sll);
 		return (NULL);
 	}
-	return (cmd);
+	return (sll);
 }
 /**
- * parse_cmd - to manage the string input
+ * parse_sll - to manage the string input
  * @input: what the user write in the input
  * Return: Command of the string
  */
-sll_t *parse_cmd(char *input)
+sll_t *parse_sll(char *input)
 {
 	int i = 0, flags_count = 0;
-	sll_t *cmd = NULL;
+	sll_t *sll = NULL;
 	char *token = NULL;
 
 	/** Remove the last character '\n' for '\0' */
@@ -88,28 +88,28 @@ sll_t *parse_cmd(char *input)
 
 	flags_count = count_flags_by_space(input); /*Return the count of the flags*/
 
-	cmd = new_cmd(flags_count);
-	if (!cmd)
+	sll = new_sll(flags_count);
+	if (!sll)
 		return (NULL);
 
-	if (cmd->num_flags == 0)
+	if (sll->num_flags == 0)
 	{
-		cmd->Command = _strdup(input);
-		return (cmd);
+		sll->Command = _strdup(input);
+		return (sll);
 	}
 
 	token = strtok(input, " "); /*Input: ls -l -a -b*/
 	while (token != NULL)		/*Command = [ls] [-l] [-a] [-b]*/
 	{
-		if (cmd->Command == NULL)
-			cmd->Command = _strdup(token);
+		if (sll->Command == NULL)
+			sll->Command = _strdup(token);
 
 		else
-			cmd->flags[i] = _strdup(token), i++;
+			sll->flags[i] = _strdup(token), i++;
 
 		token = strtok(NULL, " ");
 	}
-	return (cmd);
+	return (sll);
 }
 /**
  * new_signal_handler - new atribute to signal

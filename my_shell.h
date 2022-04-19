@@ -14,7 +14,7 @@
 
 /**
  * struct SLL - structure to manage the shell
- * @cmd: Command
+ * @sll: Command
  * @flags: arguments
  * @num_flags: number of arguments
 */
@@ -25,14 +25,18 @@ typedef struct SLL
 	int num_flags;
 } sll_t;
 
-void free_all(sll_t *cmd);
+void free_all(sll_t *sll);
 int count_flags_by_space(char *input);
-sll_t *new_cmd(int num_flags);
-sll_t *parse_cmd(char *input);
+sll_t *new_sll(int num_flags);
+sll_t *parse_sll(char *input);
 void new_signal_handler(int pid __attribute__((unused)));
-char *_strconcat(char *s1, char *s2, char *s3);
+char *getpath_sll(sll_t *sll, char *envPath);
+int nobuilt_in(sll_t *sll, char *CommandPath)
+int built_in(sll_t *sll, char **envs);
+
 int _strlen(const char *str);
+char *_strconcat(char *s1, char *s2, char *s3);
 char *_strdup(char *str);
-char *getpath_cmd(sll_t *cmd, char *envPath);
+int _strcmp(char *s1, char *s2);
 
 #endif
