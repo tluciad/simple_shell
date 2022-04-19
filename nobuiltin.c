@@ -21,7 +21,7 @@ int nobuilt_in(sll_t *sll, char *CommandPath)
 		if (i == 0)
 			arg_list[i] = _strdup(CommandPath);
 		else
-			arg_list[i] = _strdup(sll->args[i - 1]);
+			arg_list[i] = _strdup(sll->flags[i - 1]);
 		i++;
 	}
 	arg_list[i] = NULL;

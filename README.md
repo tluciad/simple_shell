@@ -14,7 +14,7 @@ The first UNIX was developed in 1970 at Bell Telephone Laboratories
 - fork (man 2 fork)
 - free (man 3 free)
 - getcwd (man 3 getcwd)
-- getline (man 3 getline)
+- GETline (man 3 GETline)
 - getpid (man 2 getpid)
 - isatty (man 3 isatty)
 - kill (man 2 kill)

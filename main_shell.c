@@ -10,7 +10,8 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)),
 {
 	char *line = NULL;
 	int count = 0;
-	char *CommandPath = NULL, *envPath;
+	char *CommandPath = NULL, *envPath; 
+	sll_t *sll;
 
 	envPath = getenv("PATH");
 	signal(SIGINT, new_signal_handler); /*SIGINT = Interrupt the process*/
@@ -26,22 +27,22 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)),
 			if (write(STDOUT_FILENO, "$ ", 2) == EOF) /* print the prompt*/
 				exit(EXIT_FAILURE);
 		}
-		_getline(&line); /* Line provided by user*/
+		GETline(&line); /* Line provided by user*/
 		sll = parse_sll(line);
 		free(line);
 
-		if (built_in(sll_t, envs))
+		if (built_in(sll, envs))
 			continue;
 
-		CommandPath = get_path_from_Command(sll, envPath);
+		CommandPath = getpath_sll(sll, envPath);
 		if (!CommandPath)
 		{
 			printf("%s: Command not found\n", sll->Command);
-			free(CommandPath), free_all(sll);
+			free(CommandPath), ALLfree(sll);
 			continue;
 		}
 		nobuilt_in(sll, CommandPath);
-		free(CommandPath), free_all(sll);
+		free(CommandPath), ALLfree(sll);
 	}
 	return (EXIT_SUCCESS);
 }

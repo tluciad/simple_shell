@@ -1,10 +1,10 @@
 #include "my_shell.h"
 /**
- * free_all - Function to free all dynamic memory allocated
+ * ALLfree - Function to free all dynamic memory allocated
  * @sll: pointer to Command element of structure
  */
 
-void free_all(sll_t *sll)
+void ALLfree(sll_t *sll)
 {
 	int i = 0;
 
@@ -28,12 +28,12 @@ void free_all(sll_t *sll)
 	}
 }
 /**
- * count_flags_by_space -  to determinate the number of arguments
+ * flagsCOUNT -  to determinate the number of arguments
  * after Command
  * @input: the user input
  * Return: the count of flags
  */
-int count_flags_by_space(char *input)
+int flagsCOUNT(char *input)
 {
 	int count = 0;
 
@@ -66,7 +66,7 @@ sll_t *new_sll(int num_flags)
 	sll->flags = (char **)malloc(sizeof(char *) * num_flags);
 	if (sll->flags == NULL)
 	{
-		free_all(sll);
+		ALLfree(sll);
 		return (NULL);
 	}
 	return (sll);
@@ -86,7 +86,7 @@ sll_t *parse_sll(char *input)
 	if (input[strlen(input) - 1] == '\n') /*Remove the "\n" of the end*/
 		input[strlen(input) - 1] = '\0';  /*from the variable - (line)*/
 
-	flags_count = count_flags_by_space(input); /*Return the count of the flags*/
+	flags_count = flagsCOUNT(input); /*Return the count of the flags*/
 
 	sll = new_sll(flags_count);
 	if (!sll)

@@ -9,7 +9,7 @@ int built_in(sll_t *sll, char **envs)
 {
 	if (strcmp(sll->Command, "exit") == 0)
 	{
-		free_all(sll);
+		ALLfree(sll);
 		exit(EXIT_SUCCESS);
 	}
 
@@ -20,21 +20,21 @@ int built_in(sll_t *sll, char **envs)
 			printf("%s\n", *envs);
 			envs++;
 		}
-		free_all(sll);
+		ALLfree(sll);
 		return (1);
 	}
 
 	if (strcmp(sll->Command, "cd") == 0)
 	{
 		printf("I'm cd Command\n");
-		free_all(sll);
+		ALLfree(sll);
 		return (1);
 	}
 
 	if (strcmp(sll->Command, "cd") == 0)
 	{
 		printf("I'm cd Command\n");
-		free_all(sll);
+		ALLfree(sll);
 		return (1);
 	}
 	return (0);

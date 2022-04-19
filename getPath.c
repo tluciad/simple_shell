@@ -8,9 +8,8 @@
 char *getpath_sll(sll_t *sll, char *envPath)
 {
 	char *path = NULL,
-			 *token = NULL,
-			 *tempEnvP = NULL,
-			 *tempToken = NULL;
+		 *token = NULL,
+		 *tempEnvP = NULL;
 	struct stat stats;
 
 	tempEnvP = _strdup(envPath);
