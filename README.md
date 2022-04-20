@@ -3,6 +3,7 @@ Write a simple UNIX Command interpreter.
 The first UNIX was developed in 1970 at Bell Telephone Laboratories
 
 ## Description
+Simple_Shell is an exercise from Holberton School Colombia to C17. The objective is to make a utility that replicates the functioning of the shell.
 
 ## List of allowed functions and system calls:
 - access (man 2 access)
