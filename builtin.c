@@ -7,6 +7,8 @@
  */
 int built_in(sll_t *sll, char **envs)
 {
+	look_char(sll);
+	
 	if (strcmp(sll->Command, "exit") == 0)
 	{
 		ALLfree(sll);

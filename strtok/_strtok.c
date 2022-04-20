@@ -9,8 +9,7 @@ char *_strtok(char *s, char d)
 	new char;
 	int i = 0;
 
-	if (s != NULL)
-		input = s;
+	input = s;
 
 	if (input == NULL)
 		return (NULL);
@@ -18,8 +17,8 @@ char *_strtok(char *s, char d)
 	char *result = new char[strlen(input) + 1];
 
 	while (input[i] != '\0')
-		i++;
 	{
+		i++;	
 		if (input[i] != d)
 			result[i] = input[i];
 
