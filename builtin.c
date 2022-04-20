@@ -9,13 +9,13 @@ int built_in(sll_t *sll, char **envs)
 {
 	look_char(sll);
 
-	if (strcmp(sll->Command, "exit") == 0)
+	if (_strcmp(sll->Command, "exit") == 0)
 	{
 		ALLfree(sll);
 		exit(EXIT_SUCCESS);
 	}
 
-	if (strcmp(sll->Command, "env") == 0)
+	if (_strcmp(sll->Command, "env") == 0)
 	{
 		while (*envs)
 		{
@@ -26,7 +26,7 @@ int built_in(sll_t *sll, char **envs)
 		return (1);
 	}
 
-	if (strcmp(sll->Command, "cd") == 0)
+	if (_strcmp(sll->Command, "cd") == 0)
 	{
 		printf("I'm cd Command\n");
 		ALLfree(sll);
