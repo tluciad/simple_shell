@@ -45,3 +45,33 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 ## Flowchart
 ![Untitled Diagram(2)](https://user-images.githubusercontent.com/98775997/164135193-62dd3e0d-c257-45d5-952e-1c02f8be8d8f.jpg)
+
+## Files
+- my_shell.h
+- builtin.c
+- getpath.c
+- main_shell.c
+- man_1_simple_shell
+- my_shellcmd.c
+- nobuiltin.c
+- Ofunc.c
+- stringfunc.c
+- README.md
+
+## Structure in my_shell.h
+```
+/**
+ * struct SLL - structure to manage the shell
+ * @flags: arguments
+ * @Command: parameter command
+ * @num_flags: number of arguments
+ */
+typedef struct SLL
+{
+	char *Command;
+	char **flags;
+	int num_flags;
+} sll_t;
+```
+## Exit status
+Returns the exit status of the last command executed, with zero indicating success and non-zero indicating failure. If a command is not found, the return status is 127;
