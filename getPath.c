@@ -11,13 +11,19 @@ char *getpath_sll(sll_t *sll, char *envPath)
 		 *token = NULL,
 		 *tempEnvP = NULL;
 	struct stat stats;
+	int flag = 0;
 
 	tempEnvP = _strdup(envPath);
+	flag = look_char(sll);
 
 	token = strtok(tempEnvP, ":");
 	while (token != NULL)
 	{
-		path = _strconcat(token, "/", sll->Command);
+		if (flag == 1)
+			path = _strdup(sll->Command);
+		
+		else
+			path = _strconcat(token, "/", sll->Command);
 
 		if (stat(path, &stats) == 0)
 			break;

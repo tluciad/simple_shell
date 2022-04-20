@@ -6,11 +6,12 @@
  * @envs: environment
  * Return: int
  */
-int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)), char **envs)
+int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)), 
+char **envs)
 {
 	char *line = NULL;
 	int count = 0;
-	char *CommandPath = NULL, *envPath; 
+	char *CommandPath = NULL, *envPath;
 	sll_t *sll;
 
 	envPath = getenv("PATH");
