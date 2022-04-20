@@ -2,6 +2,8 @@
 Write a simple UNIX Command interpreter.
 The first UNIX was developed in 1970 at Bell Telephone Laboratories
 
+## Description
+
 ## List of allowed functions and system calls:
 - access (man 2 access)
 - chdir (man 2 chdir)
@@ -41,3 +43,5 @@ Your shell will be compiled this way:
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
+## Flowchart
+![Untitled Diagram(2)](https://user-images.githubusercontent.com/98775997/164135193-62dd3e0d-c257-45d5-952e-1c02f8be8d8f.jpg)
