@@ -37,16 +37,17 @@ int flagsCOUNT(char *input)
 {
 	int count = 0;
 
-	char *dup = _strdup(input);	/*Duplicate the "input" variable*/
+	char *dup = _strdup(input);		/*Duplicate the "input" variable*/
 	char *token = strtok(dup, " "); /*the function strtok() modified*/
 
 	while (token != NULL)
 		count++, token = strtok(NULL, " "); /*Make a count of all input*/
 
 	count = count >= 1 ? (count - 1) : 0; /*condition ? case true : case false;*/
-
+	free(dup);
 	return (count);
 }
+
 /**
  * new_sll - to determinate the Command in the input
  * @num_flags : number of flags in the string
@@ -54,8 +55,9 @@ int flagsCOUNT(char *input)
  */
 sll_t *new_sll(int num_flags)
 {
-	sll_t *sll = (sll_t *)malloc(sizeof(sll_t));
+	sll_t *sll = NULL;
 
+	sll = (sll_t *)malloc(sizeof(sll_t));
 	if (!sll)
 		return (NULL);
 

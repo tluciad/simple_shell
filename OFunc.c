@@ -13,7 +13,7 @@ void GETline(char **line)
 	if (nread == EOF)
 	{
 		if (isatty(STDIN_FILENO) != 0)
-			write(STDOUT_FILENO, "\n", -1);
+			write(STDOUT_FILENO, "\n", 1);
 		if (*line)
 			free(*line);
 
