@@ -25,7 +25,6 @@ char *getpath_sll(sll_t *sll, char *envPath)
 	tempEnvP = _strdup(envPath);
 	token = strtok(tempEnvP, ":");
 	flag = look_char(sll);
-	
 	while (token != NULL)
 	{
 		if (flag == 1)
