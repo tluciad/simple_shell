@@ -31,11 +31,5 @@ int built_in(sll_t *sll, char **envs)
 		return (1);
 	}
 
-	if (strcmp(sll->Command, "cd") == 0)
-	{
-		printf("I'm cd Command\n");
-		ALLfree(sll);
-		return (1);
-	}
 	return (0);
 }
