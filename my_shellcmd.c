@@ -113,7 +113,6 @@ sll_t *parse_sll(char *input)
 }
 /**
  * new_signal_handler - new atribute to signal
- * @attribute: parameter
  * @pid: process id
  */
 void new_signal_handler(int pid __attribute__((unused)))

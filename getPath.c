@@ -22,7 +22,6 @@ char *getpath_sll(sll_t *sll, char *envPath)
 			__LINE__);
 		exit(127);
 	}
-
 	tempEnvP = _strdup(envPath);
 	flag = look_char(sll);
 
@@ -42,7 +41,6 @@ char *getpath_sll(sll_t *sll, char *envPath)
 		path = NULL;
 		token = strtok(NULL, ":");
 	}
-
 	free(tempEnvP);
 
 	if (!path)
