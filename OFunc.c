@@ -1,7 +1,7 @@
 #include "my_shell.h"
 /**
- * GETline - function to line the input provided by the user 
- * @line: parameter to be read 
+ * GETline - function to line the input provided by the user
+ * @line: parameter to be read
  */
 void GETline(char **line)
 
@@ -18,6 +18,10 @@ void GETline(char **line)
 	}
 }
 
+/**
+ * R_spaces - function that removes spaces in the input string
+ * @sll: shell structure
+ */
 void R_spaces(sll_t *sll)
 {
 	int i = 0, j = 0;
@@ -31,6 +35,11 @@ void R_spaces(sll_t *sll)
 	sll->Command[j] = '\0';
 }
 
+/**
+ * look_char - function to look up for an specific character
+ * @sll: shell typedef structure
+ * Return: int
+ */
 int look_char(sll_t *sll)
 {
 	int index = 0;

@@ -17,7 +17,7 @@
  * @sll: Command
  * @flags: arguments
  * @num_flags: number of arguments
-*/
+ */
 typedef struct SLL
 {
 	char *Command;
@@ -35,11 +35,11 @@ int nobuilt_in(sll_t *sll, char *CommandPath);
 int built_in(sll_t *sll, char **envs);
 int look_char(sll_t *sll);
 int look_char(sll_t *sll);
+void GETline(char **line);
 
 int _strlen(const char *str);
 char *_strconcat(char *s1, char *s2, char *s3);
 char *_strdup(char *str);
 int _strcmp(char *s1, char *s2);
-void GETline(char **line);
 
 #endif

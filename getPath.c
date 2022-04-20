@@ -21,7 +21,7 @@ char *getpath_sll(sll_t *sll, char *envPath)
 	{
 		if (flag == 1)
 			path = _strdup(sll->Command);
-		
+
 		else
 			path = _strconcat(token, "/", sll->Command);
 

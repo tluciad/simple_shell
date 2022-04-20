@@ -1,9 +1,9 @@
 #include "my_shell.h"
 /**
- * n_built_in - execute non builtin functions of shell
+ * nobuilt_in - execute non builtin functions of shell
  * @sll: typedef structure shell
  * @CommandPath: path enviroment of command
- * @return int
+ * Return: int
  */
 int nobuilt_in(sll_t *sll, char *CommandPath)
 {

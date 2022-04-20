@@ -2,7 +2,7 @@
 
 /**
  * _strlen - returns the length of a string.
- * @s: pointer to String
+ * @str: pointer to String
  * Return: Nothing
  */
 int _strlen(const char *str)
@@ -17,7 +17,13 @@ int _strlen(const char *str)
 
 	return (count);
 }
-
+/**
+ * _strconcat - function that concatenates strings
+ * @s1: string to concatenate
+ * @s2: string to concatenate
+ * @s3: string to concatenate
+ * Return: the string result of the concatenate
+ */
 char *_strconcat(char *s1, char *s2, char *s3)
 {
 	char *pstr = NULL;
