@@ -13,6 +13,16 @@ char *getpath_sll(sll_t *sll, char *envPath)
 	struct stat stats;
 	int flag = 0;
 
+	if (!envPath || envPath[0] == '\0')
+	{
+		fprintf(
+			stderr,
+			"%s: line :%d: sh: No such file or directory\n",
+			__FILE__,
+			__LINE__);
+		exit(127);
+	}
+
 	tempEnvP = _strdup(envPath);
 	flag = look_char(sll);
 

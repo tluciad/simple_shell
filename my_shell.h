@@ -14,8 +14,8 @@
 
 /**
  * struct SLL - structure to manage the shell
- * @sll: Command
  * @flags: arguments
+ * @Command: parameter command
  * @num_flags: number of arguments
  */
 typedef struct SLL

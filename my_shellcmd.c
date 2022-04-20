@@ -79,7 +79,7 @@ sll_t *new_sll(int num_flags)
 sll_t *parse_sll(char *input)
 {
 	int i = 0, flags_count = 0;
-	sll_t *sll = NULL;
+	sll_t *sll;
 	char *token = NULL;
 
 	/** Remove the last character '\n' for '\0' */
