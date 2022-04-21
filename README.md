@@ -49,6 +49,19 @@ After compile all .c located in this repository you can call the created shell u
 ```
 ./hsh
 ```
+## Non interactive mode
+```
+root@DESKTOP-QQAMHH6:/mnt/c/Users/TANIA DIAZ/.git/simple_shell# echo "ls" | ./hsh
+Makefile  README.md  getPath.c  main_shell.c        my_shell.h     nobuiltin.c  strtok
+OFunc.c   builtin.c  hsh        man_1_simple_shell  my_shellcmd.c  stringfun.c
+```
+## Interactive mode 
+```
+$ ls
+Makefile  README.md  getPath.c  main_shell.c        my_shell.h     nobuiltin.c  strtok
+OFunc.c   builtin.c  hsh        man_1_simple_shell  my_shellcmd.c  stringfun.c
+$
+```
 ## Flowchart
 ![Untitled Diagram(2)](https://user-images.githubusercontent.com/98775997/164135193-62dd3e0d-c257-45d5-952e-1c02f8be8d8f.jpg)
 
