@@ -79,5 +79,4 @@ typedef struct SLL
 	int num_flags;
 } sll_t;
 ```
-## Exit status
-Returns the exit status of the last command executed, with zero indicating success and non-zero indicating failure. If a command is not found, the return status is 127;
+## Exit 
