@@ -44,6 +44,11 @@ Your shell will be compiled this way:
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
+## Invocation
+After compile all .c located in this repository you can call the created shell using:
+```
+./hsh
+```
 ## Flowchart
 ![Untitled Diagram(2)](https://user-images.githubusercontent.com/98775997/164135193-62dd3e0d-c257-45d5-952e-1c02f8be8d8f.jpg)
 
